@@ -37,7 +37,7 @@ Adaptar Stable Diffusion v1.4 al estilo de las ilustraciones de libros antiguos 
 4. Inyección de la LoRA en la UNet y optimizador AdamW solo sobre sus parámetros.
 5. Bucle de entrenamiento: codificación de la imagen con el VAE, adición de ruido en un timestep aleatorio, predicción del ruido con la UNet y pérdida MSE.
 6. Generación con el modelo base + LoRA, con los mismos prompts y la misma semilla, para comparar.
-7. Exportación del adaptador entrenado.
+7. Exportación del adaptador entrenado (ver nota en Resultados sobre la pérdida de los pesos).
 
 Todos los parámetros se modifican en una única celda del notebook.
 
@@ -45,7 +45,7 @@ Todos los parámetros se modifican en una única celda del notebook.
 
 | | Entrenamiento original | Entrenamiento reducido |
 |---|---|---|
-| Estado | Completado | Pendiente de finalizar |
+| Estado | Completado (pesos no disponibles) | Pendiente de finalizar |
 | Imágenes | 800 (selección aleatoria, semilla 42) | Por definir |
 | Épocas | 5 | Por definir |
 | Tamaño de lote | 3 (267 lotes por época) | Por definir |
@@ -64,6 +64,8 @@ Pérdida (MSE) del último lote de cada época. Es un valor puntual y ruidoso, s
 | Pérdida | 0,235 | 0,0618 | 0,117 | 0,117 | 0,0246 |
 
 La comparación visual entre el modelo base y el modelo con LoRA está en las secciones 1 y 6 del notebook.
+
+**Nota:** el entrenamiento terminó, pero los pesos de la LoRA se perdieron durante la exportación y no están disponibles. Solo se conservan las salidas del notebook (pérdidas e imágenes generadas).
 
 ### Entrenamiento reducido
 
@@ -87,10 +89,11 @@ Pendiente de finalizar.
 3. Ajusta, si hace falta, la celda de parámetros.
 4. Ejecuta las celdas en orden. La primera instala `diffusers`, `datasets`, `accelerate` y `peft`, y desinstala `torchao` por incompatibilidad con `peft`.
 5. La descarga del dataset ocupa unos 5 GB.
-6. Las dos últimas celdas guardan el adaptador en `/content/oldbook_lora` y descargan un `.zip`.
 
 Opcionalmente, configura un `HF_TOKEN` para evitar el aviso de peticiones sin autenticar a Hugging Face.
 
 ## Hugging Face
+
+La publicación en Hugging Face está pendiente. Actualmente no hay ningún modelo descargable.
 
 Enlace al adaptador LoRA: _pendiente de publicar_.
