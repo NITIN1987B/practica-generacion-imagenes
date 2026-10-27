@@ -1,0 +1,1 @@
+https://huggingface.co/ni7in/oldbook-lora-sd14

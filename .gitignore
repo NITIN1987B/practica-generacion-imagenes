@@ -218,3 +218,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Entrega: pesos, logs, datasets y archivos temporales
+outputs/*
+!outputs/prueba_lora.png
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.log
+datasets/
+data/
+tmp/
+temp/
+*.tmp
